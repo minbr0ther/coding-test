@@ -28,4 +28,14 @@ arr.sort((a, b) => {
 ]
   */
 
-console.log();
+let answer = 1;
+let current = arr[0];
+
+for (let i = 1; i < arr.length; i++) {
+  if (arr[i][0] >= current[1]) {
+    answer++;
+    current = arr[i];
+  }
+}
+
+console.log(answer);
