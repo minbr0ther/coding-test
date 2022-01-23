@@ -4,7 +4,7 @@ function solution(n, m) {
 
   const dfs = (L) => {
     if (L === m) {
-      answer.push(tmp);
+      answer.push([...tmp]);
     } else {
       for (let i = 1; i <= n; i++) {
         tmp[L] = i;
