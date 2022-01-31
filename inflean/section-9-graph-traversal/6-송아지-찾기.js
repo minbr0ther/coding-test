@@ -1,20 +1,19 @@
 function solution(s, e) {
   let answer = 0;
-  let ch = Array.from({ length: 10001 }, () => 0);
-  let dis = Array.from({ length: 10001 }, () => 0);
-  let queue = [s];
-  ch[s] = 1;
-  dis[s] = 0;
+
+  const check = new Set([s]);
+  const distance = new Map([[s, 0]]);
+  const queue = [s];
 
   while (queue.length) {
     let x = queue.shift();
 
     for (let nx of [x - 1, x + 1, x + 5]) {
-      if (nx === e) return dis[x] + 1;
-      if (nx >= 1 && nx <= 10000 && ch[nx] === 0) {
-        ch[nx] = 1;
+      if (nx === e) return distance.get(x) + 1;
+      if (nx >= 1 && nx <= 10000 && !check.has(nx)) {
+        check.add(nx);
         queue.push(nx);
-        dis[nx] = dis[x] + 1;
+        distance.set(nx, distance.get(x) + 1);
       }
     }
   }
