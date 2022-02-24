@@ -15,7 +15,6 @@ const makeAlphabetObj = (input) => {
         obj[el] = obj[el] ? obj[el] + 10 ** i : 10 ** i;
       });
   });
-
   return obj;
 };
 
